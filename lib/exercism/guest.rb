@@ -30,8 +30,4 @@ class Guest
   def nitpicker?
     false
   end
-
-  def may_nitpick?(submission)
-    false
-  end
 end
