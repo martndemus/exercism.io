@@ -149,10 +149,6 @@ class Submission
     save
   end
 
-  def submitted?
-    true
-  end
-
   def liked?
     is_liked
   end
