@@ -227,5 +227,15 @@ class SubmissionTest < Minitest::Test
     assert_equal %w(alice bob charlie), submission.viewers
     assert_equal 3, submission.view_count
   end
+
+  def test_comments_are_sorted
+    submission.comments << Comment.new(body: 'second', at: Time.now, user: submission.user)
+    submission.comments << Comment.new(body: 'first', at: Time.now - 1000, user: submission.user)
+    submission.save
+
+    one, two = submission.comments
+    assert_equal 'first', one.body
+    assert_equal 'second', two.body
+  end
 end
 
